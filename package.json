@@ -7,6 +7,9 @@
     "start": "node .",
     "test": "nodemon ."
   },
+  "engines": {
+    "node": "16.11.1"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
