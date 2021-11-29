@@ -36,8 +36,13 @@ function create(id, code, guild) {
 }
 client.on('message', message=>{
     if(message.content.startsWith('!verify')) {
-        message.author.send(`Your code is ${gencode(message.author.id)}`)
-        create(message.author.id,gencode(message.author.id),message.guild)
+        role = messahe.guild.roles.cache.find(r=>r.name==='Verified')
+        if(!(message.member.roles.cache.has(role))) {
+            message.author.send(`Your code is ${gencode(message.author.id)}`)
+            create(message.author.id,gencode(message.author.id),message.guild)
+        }else{
+            message.reply('You are already verified')
+        }
         message.delete()
     }
 })
