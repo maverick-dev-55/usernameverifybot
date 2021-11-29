@@ -37,9 +37,8 @@ function create(id, code, guild) {
 client.on('message', message=>{
     if(message.content.startsWith('!verify')) {
         role = message.guild.roles.cache.find(r=>r.name==='Verified')
-        console.log(message.member.roles.cache.toJSON())
         if(message.member.roles.cache.has(role)) {
-            message.reply('You are already verified')
+            message.channel.send(`${message.member.toSring()} You are already verified`)
         }else{
             message.author.send(`Your code is ${gencode(message.author.id)}`)
             create(message.author.id,gencode(message.author.id),message.guild)
