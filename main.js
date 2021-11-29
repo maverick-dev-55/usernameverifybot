@@ -41,7 +41,7 @@ client.on('message', message=>{
         console.log(urole)
         console.log(urole!==undefined)
         if(urole!==undefined) {
-            message.channel.send(`@${message.member.tag} You are already verified`)
+            message.channel.send(`<@${message.author.id}> You are already verified`)
         }else{
             message.author.send(`Your code is ${gencode(message.author.id)}`)
             create(message.author.id,gencode(message.author.id),message.guild)
