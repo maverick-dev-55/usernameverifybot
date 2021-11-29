@@ -7,7 +7,7 @@ const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Disc
 client.once('ready', ()=>{
     console.log('Ready')
 })
-client.login('***REMOVED***')
+client.login('OTEyNDQ3NjIxOTM3ODkzNDg2.YZwFEQ.OkH6RJdu81IG9JqUNJFltDjdHt8')
 app.get('/verify/:name/:code', (req, res)=>{
     var name = req.params.name
     var code = req.params.code
@@ -34,7 +34,7 @@ function gencode(id) {
 function create(id, code, guild) {
     active.push({code: code, id: id, guild: guild})
 }
-client.on('message', message=>{
+client.on('messageCreate', message=>{
     if(message.content.startsWith('!verify')) {
         role = message.guild.roles.cache.find(r=>r.name==='Verified')
         urole = message.member.roles.cache.toJSON().find(r=>r.id===role.id)
