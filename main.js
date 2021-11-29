@@ -36,7 +36,7 @@ function create(id, code, guild) {
 }
 client.on('message', message=>{
     if(message.content.startsWith('!verify')) {
-        role = messahe.guild.roles.cache.find(r=>r.name==='Verified')
+        role = message.guild.roles.cache.find(r=>r.name==='Verified')
         if(!(message.member.roles.cache.has(role))) {
             message.author.send(`Your code is ${gencode(message.author.id)}`)
             create(message.author.id,gencode(message.author.id),message.guild)
