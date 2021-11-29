@@ -34,7 +34,7 @@ function create(id, code) {
 }
 client.on('message', message=>{
     if(message.content.startsWith('!verify')) {
-        message.reply(`Your code is ${gencode(message.author.id)}`)
+        message.author.send(`Your code is ${gencode(message.author.id)}`)
         create(message.author.id,gencode(message.author.id))
     }
 })
