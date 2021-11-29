@@ -13,9 +13,11 @@ app.get('/verify/:name/:code', (req, res)=>{
     var code = req.params.code
     var verications = active.find(obj=>obj.code==code)
     if(verications !== undefined) {
-        client.guilds.fetch('912106172692172840').then(guild=>{
+        client.guilds.fetch(verications.guild.id.toString).then(guild=>{
             guild.fetch().then(g=>{
                 g.members.fetch(verications.id).then(user=>{
+                    role = g.roles.cache.find(r=>r.name==='Verified')
+                    user.addRole(role)
                     user.setNickname(name, "Verified!").then()
                     res.send('success')
                 })
@@ -29,13 +31,14 @@ app.get('/verify/:name/:code', (req, res)=>{
 function gencode(id) {
     return alder32.str(id)
 }
-function create(id, code) {
-    active.push({code: code, id: id})
+function create(id, code, guild) {
+    active.push({code: code, id: id, guild: guild})
 }
 client.on('message', message=>{
     if(message.content.startsWith('!verify')) {
         message.author.send(`Your code is ${gencode(message.author.id)}`)
-        create(message.author.id,gencode(message.author.id))
+        create(message.author.id,gencode(message.author.id),message.guild)
+        message.delete()
     }
 })
 app.listen(process.env.PORT || 8080, _=>{
