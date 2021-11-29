@@ -16,9 +16,8 @@ app.get('/verify/:name/:code', (req, res)=>{
         client.guilds.fetch(verications.guild.id.toString()).then(guild=>{
             guild.fetch().then(g=>{
                 g.members.fetch(verications.id).then(user=>{
-                    console.log(user)
                     role = g.roles.cache.find(r=>r.name==='Verified')
-                    user.addRole(role)
+                    user.roles.add(role)
                     user.setNickname(name, "Verified!").then()
                     res.send('success')
                 })
