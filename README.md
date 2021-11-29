@@ -6,4 +6,4 @@ run this command
 ```
 heroku config:set PASSWORD=[bot token you copied earlier]
 ```
-and now to publish your app you need to push to git (run build.bat "Initial Commit") [make sure you install git first](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+and now to publish your app you need to push to git (run build.bat "Initial Commit", if you are on linux (or MacOS), create a new file called build, open it and copy the contents from build.bat without "@echo off") [make sure you install git first](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
