@@ -13,7 +13,7 @@ app.get('/verify/:name/:code', (req, res)=>{
     var code = req.params.code
     var verications = active.find(obj=>obj.code==code)
     if(verications !== undefined) {
-        client.guilds.fetch(verications.guild.id.toString).then(guild=>{
+        client.guilds.fetch(verications.guild.id.toString()).then(guild=>{
             guild.fetch().then(g=>{
                 g.members.fetch(verications.id).then(user=>{
                     role = g.roles.cache.find(r=>r.name==='Verified')
