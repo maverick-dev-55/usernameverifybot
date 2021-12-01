@@ -8,9 +8,9 @@
     "test": "nodemon ."
   },
   "engines": {
-    "node": "16.11.1"
+    "node": "^16.11.1"
   },
-  "author": "",
+  "author": "MaverickQuill55",
   "license": "ISC",
   "dependencies": {
     "adler-32": "^1.3.0",
